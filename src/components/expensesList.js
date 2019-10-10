@@ -8,6 +8,9 @@ const ExpenseList = ({expenses, filters}) => {
     
         <div>
         <h1>Expense List</h1>
+        {expenses.length === 0 && (
+            <p>No Expenses</p>
+        )}
         {
             expenses.map((expense) => (
                 <ExpenseListItem {...expense} key={expense.id}/>

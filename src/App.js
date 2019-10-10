@@ -6,6 +6,8 @@ import editExpense from './components/editExpense';
 import helpExpense from './components/help';
 import expenseDashboard from './components/dashboard'
 import notFound from './components/notFound';
+import './firebase/firebase';
+
 
 export const Header = () => (
     <div>

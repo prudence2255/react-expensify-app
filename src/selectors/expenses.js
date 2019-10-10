@@ -13,12 +13,12 @@ export default (expenses, {text, startDate, endDate, sortBy}) => {
         if(sortBy === 'date') {
             return a.createdAt < b.createdAt ? 1 : -1;
         }
-       return expenses
+     
     }).sort((a, b) => {
         if(sortBy === 'amount') {
             return a.amount <  b.amount ? 1 : -1;
         }
-        return expenses;
+       
     })
     
 }
