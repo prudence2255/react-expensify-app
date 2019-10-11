@@ -41,4 +41,27 @@ type: "EDIT_EXPENSE",
 id,
 update,
 })
+//SET_expenses
 
+export const setExpenses = (expenses) => {
+  return {
+    type: "SET_EXPENSES",
+  expenses
+  }
+}
+
+export const setStartExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value').then((expenses) => {
+      const expensesArray = [];
+     expenses.forEach((expense) => {
+        expensesArray.push({
+          id: expense.key,
+          ...expense.val()
+        })
+      })
+      dispatch(setExpenses(expensesArray));
+    })
+    
+  }
+}
