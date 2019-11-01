@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyAZknRYfwMnRou-jhhEoMHXw6SAXD_BPEo",
     authDomain: "expensify-38d10.firebaseapp.com",
@@ -15,8 +16,8 @@ const firebaseConfig = {
 
  firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-
-export {database as default, firebase}
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export {database as default, googleAuthProvider, firebase}
 
 // database.ref('expenses').once('value').then((data) => {
 //     console.log(data.val());
