@@ -1,7 +1,6 @@
 
-import uuid from 'uuid';
+
 import database from '../firebase/firebase'
-import { reverse } from 'dns';
 
 
 
@@ -13,7 +12,8 @@ export const addExpense = (expense) => ({
 })
 
 export const startAddExpense = (expenseData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const  {
       description = '',
    note = '',
@@ -21,7 +21,7 @@ export const startAddExpense = (expenseData = {}) => {
     createdAt = 0
   } = expenseData;
   const expense = {description, note, amount, createdAt}
-  database.ref('expenses').push(expense).then((ref) => {
+  database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
     dispatch(addExpense({
       id: ref.key,
       ...expense
@@ -37,8 +37,9 @@ export const startAddExpense = (expenseData = {}) => {
         }
 })
 export const setRemoveExpense = ({id}={}) => {
-  return dispatch => {
-   return database.ref(`expenses/${id}`).remove().then(() => {
+  return (dispatch, getState )=> {
+    const uid = getState().auth.uid;
+   return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
       dispatch(removeExpense({id}))
     })
   }
@@ -52,8 +53,9 @@ id,
 update,
 })
 export const setEditExpense = (id, update) => {
-      return dispatch => {
-        return database.ref(`expenses/${id}`).update(update).then(() => {
+      return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}/`).update(update).then(() => {
           dispatch(editExpense(id, update))
         })
       }
@@ -68,8 +70,9 @@ export const setExpenses = (expenses) => {
 }
 
 export const setStartExpenses = () => {
-  return (dispatch) => {
-    return database.ref('expenses').once('value').then((expenses) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return database.ref(`users/${uid}/expenses`).once('value').then((expenses) => {
       const expensesArray = [];
      expenses.forEach((expense) => {
         expensesArray.push({
