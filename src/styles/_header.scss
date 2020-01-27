@@ -1,0 +1,12 @@
+
+.header{
+    width: 100%;
+    height: auto;
+    background: rgba(12, 11, 11, 0.692);
+    .header-nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px;
+    }
+}

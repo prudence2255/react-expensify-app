@@ -7,13 +7,16 @@ import {startLogout} from '../actions/auth';
 
 
 const Header = ({dispatch}) => (
-    <div>
-    <h3>Expensify</h3>
-        <NavLink to="/dashboard" activeClassName="is-active" >Home</NavLink>
-        <NavLink to="/create" activeClassName="is-active">Create</NavLink>
+    <div className="header">
+   <div className="header-nav">
+   <h3>Expensify</h3>
+        <div>
+        <NavLink to="/dashboard" activeClassName="is-active w3-btn">Dashboard</NavLink>
+        </div>
         <button onClick={()=> {
            dispatch(startLogout())
-        }}>Logout</button>
+        }} className="w3-btn btn-blue">Logout</button>
+   </div>
     </div>
 )
 

@@ -1,0 +1,19 @@
+
+
+.bg-layout{
+    background: url('/images/bg.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login-box{
+        background: fade-out( white,  .1);
+        padding: 30px;
+        
+        border-radius: 5px;
+        text-align: center;
+    }
+}
+

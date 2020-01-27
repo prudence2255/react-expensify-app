@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import numeral from 'numeral';
+import {Link} from 'react-router-dom'
 import selectExpenses from '../selectors/expenses';
 import selectExpensesTotal from '../selectors/expenses-total';
 
@@ -11,6 +12,7 @@ const ExpensesSummary = ({expenseCount, expensesTotal}) => {
     return (
         <div>
             <h1>Viewing {expenseCount} {expenseWord} totalling {formatedExpensesTotal}</h1>
+            <Link to="/create">Add Expense</Link>
         </div>
     )
 }
