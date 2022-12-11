@@ -6,7 +6,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^7.1.0",
     "git": "^0.1.5",
     "history": "^4.10.1",
